@@ -1,0 +1,9 @@
+{
+	"name": "InfosyncADF1",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a37abd7c-109a-45d2-8bfb-c7e6e81c2e4a",
+		"tenantId": "704ce3d6-a4bf-4e09-8516-d52840c9f7a9"
+	}
+}
