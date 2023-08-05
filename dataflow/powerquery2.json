@@ -1,0 +1,20 @@
+{
+	"name": "powerquery2",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "DelimitedText2",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  DelimitedText2",
+					"dataset": {
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared DelimitedText2 = let AdfDoc = AzureStorage.BlobContents(\"https://storage3jssinfnaex3m.blob.core.windows.net/datafactory/output/SecondDatafile\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let Source = #\"DelimitedText2\",\r\n  #\"Filtered rows\" = Table.SelectRows(Source, each ([DATE_TERM] = \"\")) in #\"Filtered rows\";\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}

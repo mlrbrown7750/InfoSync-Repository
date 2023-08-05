@@ -99,6 +99,93 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Copy_sxa",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Power Query1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "/redacted-2022-december-31-wprdc.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "datafactory/output/SecondDatafile"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "GoogleCloudStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_sxa",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_sxa",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "PowerQuery2",
+				"type": "ExecuteWranglingDataflow",
+				"dependsOn": [
+					{
+						"activity": "Copy_sxa",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"queries": []
+				}
 			}
 		],
 		"annotations": []
