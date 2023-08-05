@@ -1,0 +1,93 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "paydata",
+				"folderPath": "output",
+				"container": "datafactory"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FIRST_NAME",
+				"type": "String"
+			},
+			{
+				"name": "LAST_NAME",
+				"type": "String"
+			},
+			{
+				"name": "Combo Name",
+				"type": "String"
+			},
+			{
+				"name": "DEPARTMENT",
+				"type": "String"
+			},
+			{
+				"name": "JOB_TITLE",
+				"type": "String"
+			},
+			{
+				"name": "ELECTED_OFFICIAL",
+				"type": "String"
+			},
+			{
+				"name": "DATE_STARTED",
+				"type": "String"
+			},
+			{
+				"name": "SEX",
+				"type": "String"
+			},
+			{
+				"name": "ETHNICITY",
+				"type": "String"
+			},
+			{
+				"name": "ORIG_START",
+				"type": "String"
+			},
+			{
+				"name": "DATE_TERM",
+				"type": "String"
+			},
+			{
+				"name": "PAY_STATUS",
+				"type": "String"
+			},
+			{
+				"name": " ANNUAL_SALARY ",
+				"type": "String"
+			},
+			{
+				"name": " REGULAR_PAY ",
+				"type": "String"
+			},
+			{
+				"name": " OVERTIME_PAY ",
+				"type": "String"
+			},
+			{
+				"name": " INCENTIVE_PAY ",
+				"type": "String"
+			},
+			{
+				"name": " GROSS_PAY ",
+				"type": "String"
+			}
+		]
+	}
+}
