@@ -54,6 +54,51 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Power Query1",
+				"type": "ExecuteWranglingDataflow",
+				"dependsOn": [
+					{
+						"activity": "Copy_44d",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "powerquery1",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"queries": [
+						{
+							"queryName": "UserQuery",
+							"dataflowSinks": [
+								{
+									"name": "UserQueryDelimitedText1",
+									"dataset": {
+										"referenceName": "DelimitedText1",
+										"type": "DatasetReference"
+									},
+									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tFIRST_NAME as string,\n\t\tLAST_NAME as string,\n\t\t{Combo Name} as string,\n\t\tDEPARTMENT as string,\n\t\tJOB_TITLE as string,\n\t\tELECTED_OFFICIAL as string,\n\t\tDATE_STARTED as string,\n\t\tSEX as string,\n\t\tETHNICITY as string,\n\t\tORIG_START as string,\n\t\tDATE_TERM as string,\n\t\tPAY_STATUS as string,\n\t\t{ ANNUAL_SALARY } as string,\n\t\t{ REGULAR_PAY } as string,\n\t\t{ OVERTIME_PAY } as string,\n\t\t{ INCENTIVE_PAY } as string,\n\t\t{ GROSS_PAY } as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> UserQueryDelimitedText1"
+								}
+							]
+						}
+					]
+				}
 			}
 		],
 		"annotations": []
