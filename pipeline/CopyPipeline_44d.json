@@ -180,11 +180,29 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataflow": {
+						"referenceName": "powerquery2",
+						"type": "DataFlowReference"
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
 					},
-					"queries": []
+					"queries": [
+						{
+							"queryName": "UserQuery",
+							"dataflowSinks": [
+								{
+									"name": "UserQueryDelimitedText2",
+									"dataset": {
+										"referenceName": "DelimitedText2",
+										"type": "DatasetReference"
+									},
+									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tFIRST_NAME as string,\n\t\tLAST_NAME as string,\n\t\t{Combo Name} as string,\n\t\tDEPARTMENT as string,\n\t\tJOB_TITLE as string,\n\t\tELECTED_OFFICIAL as string,\n\t\tDATE_STARTED as string,\n\t\tSEX as string,\n\t\tETHNICITY as string,\n\t\tORIG_START as string,\n\t\tDATE_TERM as string,\n\t\tPAY_STATUS as string,\n\t\t{ ANNUAL_SALARY } as string,\n\t\t{ REGULAR_PAY } as string,\n\t\t{ OVERTIME_PAY } as string,\n\t\t{ INCENTIVE_PAY } as string,\n\t\t{ GROSS_PAY } as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> UserQueryDelimitedText2"
+								}
+							]
+						}
+					]
 				}
 			}
 		],
