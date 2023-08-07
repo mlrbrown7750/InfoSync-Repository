@@ -206,6 +206,8 @@
 				}
 			}
 		],
-		"annotations": []
+		"annotations": [
+			"Test Annotation"
+		]
 	}
 }
