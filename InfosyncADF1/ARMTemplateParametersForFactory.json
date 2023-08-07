@@ -7,6 +7,15 @@
 		},
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
+		},
+		"GoogleCloudStorage1_secretAccessKey": {
+			"value": ""
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://InfosyncKeyVault.vault.azure.net/"
+		},
+		"GoogleCloudStorage1_properties_typeProperties_accessKeyId": {
+			"value": "GOOG1EKV734A2AVEQE2POVNMBUFWI7KZOITIXMSAFVTUK6L67XRE4WCSSVMLU"
 		}
 	}
 }
